@@ -39,8 +39,8 @@ importers:
         specifier: ^24.0.0
         version: 24.0.0
       prettier:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 3.2.5
+        version: 3.2.5
       solid-js:
         specifier: ^1.8.17
         version: 1.8.17
@@ -1694,8 +1694,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.0.0:
-    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+  prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3753,7 +3753,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.0.0: {}
+  prettier@3.2.5: {}
 
   pretty-format@29.7.0:
     dependencies:
