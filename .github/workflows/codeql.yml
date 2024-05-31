@@ -27,20 +27,4 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
-          upload: false
-          output: sarif-results
-
-      # Only include files that are public
-      - name: filter-sarif
-        uses: advanced-security/filter-sarif@main
-        with:
-          patterns: |
-            /src/**/*.*
-            -**/*.test.*
-          input: sarif-results/javascript.sarif
-          output: sarif-results/javascript.sarif
-
-      - name: Upload SARIF
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: sarif-results/javascript.sarif
+          languages: javascript
