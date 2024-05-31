@@ -1,17 +1,17 @@
 {
-  "name": "{{name_of_lib}}",
+  "name": "dotlottie-solid",
   "version": "0.0.0",
-  "description": "{{desc_of_lib}}",
+  "description": "An unofficial Solid library for rendering lottie and dotLottie animations in the browser.",
   "license": "MIT",
-  "author": "{{me}}",
+  "author": "moonlitgrace",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/moonlitgrace/dotlottie-solid.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/moonlitgrace/dotlottie-solid#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/moonlitgrace/dotlottie-solid/issues"
   },
   "files": [
     "dist"
@@ -57,9 +57,9 @@
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.14",
+    "@types/node": "^20.13.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.9.0",
+    "@typescript-eslint/parser": "^7.11.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.21.4",
     "esbuild-plugin-solid": "^0.6.0",
