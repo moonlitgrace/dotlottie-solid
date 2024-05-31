@@ -1,17 +1,17 @@
 {
-  "name": "{{name_of_lib}}",
+  "name": "dotlottie-solid",
   "version": "0.0.0",
-  "description": "{{desc_of_lib}}",
+  "description": "An unofficial Solid library for rendering lottie and dotLottie animations in the browser.",
   "license": "MIT",
-  "author": "{{me}}",
+  "author": "moonlitgrace",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/moonlitgrace/dotlottie-solid.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/moonlitgrace/dotlottie-solid#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/moonlitgrace/dotlottie-solid/issues"
   },
   "files": [
     "dist"
