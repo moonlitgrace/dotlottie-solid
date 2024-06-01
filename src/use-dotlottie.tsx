@@ -1,6 +1,6 @@
 import type { Config } from "@lottiefiles/dotlottie-web";
 import { DotLottie } from '@lottiefiles/dotlottie-web';
-import { ComponentProps, JSX, createMemo, createSignal, onCleanup } from "solid-js";
+import { ComponentProps, JSX, createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 import { isServer } from "solid-js/web";
 import debounce from "debounce";
 
@@ -164,4 +164,131 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 	    canvasRef?.removeEventListener('mouseenter', hoverHandler);
 	    canvasRef?.removeEventListener('mouseleave', hoverHandler);
   	});
+
+  	// Reactivities
+  	// speed
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.speed === "number" && config.speed !== dotLottie()?.speed && dotLottie()?.isLoaded) {
+  			dotLottie()?.setSpeed(config.speed);
+  		}
+  	}, [config?.speed]);
+  	// mode
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.mode === "string" && config.mode !== dotLottie()?.mode && dotLottie()?.isLoaded) {
+  			dotLottie()?.setMode(config.mode);
+  		}
+  	}, [config?.mode])
+  	// loop
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.loop === "boolean" && config.loop !== dotLottie()?.loop && dotLottie()?.isLoaded) {
+  			dotLottie()?.setLoop(config.loop);
+  		}
+  	}, [config?.loop])
+  	// useFrameInterpolation
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (
+  			typeof config?.useFrameInterpolation === "boolean" &&
+  			config.useFrameInterpolation !== dotLottie()?.useFrameInterpolation &&
+  			dotLottie()?.isLoaded
+  		) {
+  			dotLottie()?.setUseFrameInterpolation(config.useFrameInterpolation);
+  		}
+  	}, [config?.useFrameInterpolation])
+  	// segment
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (
+  			typeof config?.segment === "object" &&
+  			Array.isArray(config.segment) &&
+  			config.segment.length === 2 &&
+  			dotLottie()?.isLoaded
+  		) {
+  			const startFrame = config.segment[0];
+  			const endFrame = config.segment[1];
+
+  			dotLottie()?.setSegment(startFrame, endFrame);
+  		}
+  	}, [config?.segment])
+  	// background color
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (
+  			typeof config?.backgroundColor === "string" &&
+  			config.backgroundColor !== dotLottie()?.backgroundColor &&
+  			dotLottie()?.isLoaded
+  		) {
+  			dotLottie()?.setBackgroundColor(config.backgroundColor);
+  		}
+  	}, [config?.backgroundColor]);
+  	// render config
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.renderConfig === "object") {
+  			dotLottie()?.setRenderConfig(config.renderConfig);
+  		}
+  	}, [config?.renderConfig])
+  	// data
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.data == "string" || config?.data instanceof ArrayBuffer) {
+  			dotLottie()?.load({
+  				data: config.data,
+  				...(configRef || {})
+  			});
+  		}
+  	}, [config?.data]);
+  	// src
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.src === "string") {
+  			dotLottie()?.load({
+  				src: config.src,
+  				...(configRef || {})
+  			});
+  		}
+  	}, [config?.src]);
+  	// marker
+  	createEffect(() => {
+  		if (!dotLottie) return;
+
+  		if (typeof config?.marker === "string") {
+  			dotLottie()?.setMarker(config.marker);
+  		}
+  	}, [config?.marker])
+  	// resizeObserver
+  	createEffect(() => {
+  		if (!resizeObserver) return;
+
+  		if (config?.autoResizeCanvas && canvasRef) {
+  			resizeObserver()?.observe(canvasRef);
+  		} else {
+  			resizeObserver()?.disconnect();
+  		}
+  	}, [config?.autoResizeCanvas, resizeObserver]);
+
+  	return {
+  		dotLottie,
+  		setCanvasRef,
+  		setContainerRef,
+  		canvas: canvasRef,
+  		container: containerRef,
+  		DotLottieComponent: Component,
+  	}
+};
+
+export const setWasmUrl = (url: string): void => {
+	DotLottie.setWasmUrl(url);
 };
