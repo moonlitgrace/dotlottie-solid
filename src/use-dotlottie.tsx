@@ -17,10 +17,13 @@ function DotLottieComponent({
 	style,
 	...rest
 }: DotLottieComponentProps & ComponentProps<'canvas'>) {
-	const containerStyle = Object.assign({
-		width: '100%',
-		height: '100%',
-	}, style);
+	const containerStyle = Object.assign(
+		{
+			width: '100%',
+			height: '100%',
+		},
+		style,
+	);
 
 	return (
 		<div ref={setContainerRef} class={className} {...{ style: containerStyle }}>
@@ -30,6 +33,7 @@ function DotLottieComponent({
 					width: '100%',
 					height: '100%',
 				}}
+				{...rest}
 			>
 				{children}
 			</canvas>
@@ -56,7 +60,7 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 	const [dotLottie, setDotLottie] = createSignal<DotLottie | null>(null);
 	const [dotLottieRef, setDotLottieRef] = createSignal<DotLottie | null>(null);
 
-	let configRef: DotLottieConfig | undefined = config;
+	const configRef: DotLottieConfig | undefined = config;
 
 	let canvasRef: HTMLCanvasElement | null = null;
 	let containerRef: HTMLDivElement | null = null;
