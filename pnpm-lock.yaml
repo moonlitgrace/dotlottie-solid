@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@lottiefiles/dotlottie-web':
+        specifier: ^0.23.1
+        version: 0.23.1
     devDependencies:
       '@types/node':
         specifier: ^20.13.0
@@ -694,6 +698,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@lottiefiles/dotlottie-web@0.23.1':
+    resolution: {integrity: sha512-sJd+fsBbeJSk6jzoFkyxAPnGzUAd8GRq+ljUW6np++1Un/6Zz/Tqzo5IoJgJ+wPW5iYja9B9n1V7F8EkJQRLvA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2674,6 +2681,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@lottiefiles/dotlottie-web@0.23.1': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
