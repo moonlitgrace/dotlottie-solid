@@ -1,7 +1,7 @@
 import type { DotLottie, Config } from '@lottiefiles/dotlottie-web';
 
 import { useDotLottie } from './use-dotlottie';
-import { ComponentProps, JSX } from 'solid-js';
+import { ComponentProps, JSX, splitProps } from 'solid-js';
 
 export type DotLottieSolidProps = Omit<Config, 'canvas'> &
   	ComponentProps<'canvas'> & Partial<{
@@ -9,37 +9,23 @@ export type DotLottieSolidProps = Omit<Config, 'canvas'> &
     	playOnHover?: boolean;
   	}>;
 
-export const DotLottieSolid = ({
-	src,
-	loop,
-	data,
-	mode,
-	speed,
-	marker,
-	segment,
-	autoplay,
-	playOnHover,
-	renderConfig,
-	backgroundColor,
-	useFrameInterpolation,
-	autoResizeCanvas = true,
-	...props
-}: DotLottieSolidProps): JSX.Element => {
-	const { DotLottieComponent, dotLottie } = useDotLottie({
-		src,
-		data,
-		mode,
-		loop,
-		speed,
-		marker,
-		segment,
-		autoplay,
-		playOnHover,
-		renderConfig,
-		backgroundColor,
-		autoResizeCanvas,
-		useFrameInterpolation,
-	});
+export const DotLottieSolid = (props: DotLottieSolidProps): JSX.Element => {
+	const [dotLottieProps, restProps] = splitProps(
+		props, [
+			"src",
+			"data",
+			"mode", 
+			"loop",
+			"speed",
+			"marker",
+			"segment",
+			"autoplay",
+			"playOnHover",
+			"renderConfig",
+			"autoResizeCanvas",
+			"useFrameInterpolation"
+		]);
+	const { DotLottieComponent } = useDotLottie(dotLottieProps);
 
-	return <DotLottieComponent {...props} />
+	return <DotLottieComponent {...restProps} />
 };
