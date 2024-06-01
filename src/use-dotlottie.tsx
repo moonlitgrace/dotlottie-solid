@@ -17,14 +17,16 @@ function DotLottieComponent({
 	style,
 	...rest
 }: DotLottieComponentProps & ComponentProps<'canvas'>) {
-	const containerStyle = {
-		width: '100%',
-		height: '100%',
-		...{ style },
-	};
+	const containerStyle = Object.assign(
+		{
+			width: '100%',
+			height: '100%',
+		},
+		style,
+	);
 
 	return (
-		<div ref={setContainerRef} class={className} {...(!className && { style: containerStyle })}>
+		<div ref={setContainerRef} class={className} {...{ style: containerStyle }}>
 			<canvas
 				ref={setCanvasRef}
 				style={{
@@ -56,23 +58,24 @@ export interface UseDotLottieReturn {
 
 export const useDotLottie = (config?: DotLottieConfig) => {
 	const [dotLottie, setDotLottie] = createSignal<DotLottie | null>(null);
+	const [dotLottieRef, setDotLottieRef] = createSignal<DotLottie | null>(null);
 
-	let dotLottieRef: DotLottie | null = null;
-	let configRef: DotLottieConfig | undefined = config;
+	const configRef: DotLottieConfig | undefined = config;
 
 	let canvasRef: HTMLCanvasElement | null = null;
 	let containerRef: HTMLDivElement | null = null;
 
-	dotLottieRef = dotLottie();
-	configRef = config;
+	createEffect(() => {
+		setDotLottieRef(dotLottie());
+	});
 
 	const hoverHandler = (event: MouseEvent) => {
-		if (!config?.playOnHover || !dotLottieRef?.isLoaded) return;
+		if (!config?.playOnHover || !dotLottieRef()?.isLoaded) return;
 
 		if (event.type === 'mouseenter') {
-			dotLottieRef.play();
+			dotLottieRef()?.play();
 		} else if (event.type === 'mouseleave') {
-			dotLottieRef.pause();
+			dotLottieRef()?.pause();
 		}
 	};
 
@@ -82,9 +85,9 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 		const observerCallback = debounce((entries: IntersectionObserverEntry[]) => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					dotLottieRef?.unfreeze();
+					dotLottieRef()?.unfreeze();
 				} else {
-					dotLottieRef?.freeze();
+					dotLottieRef()?.freeze();
 				}
 			});
 		}, 150);
@@ -99,7 +102,7 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 
 		const observerCallback = debounce(() => {
 			if (config?.autoResizeCanvas) {
-				dotLottieRef?.resize();
+				dotLottieRef()?.resize();
 			}
 		}, 150);
 
@@ -125,9 +128,9 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 					(window.innerHeight || document.documentElement.clientHeight) &&
 				initialEntry.right <= (window.innerWidth || document.documentElement.clientWidth)
 			) {
-				dotLottieRef?.unfreeze();
+				dotLottieRef()?.unfreeze();
 			} else {
-				dotLottieRef?.freeze();
+				dotLottieRef()?.freeze();
 			}
 
 			intersectionObserver()?.observe(canvas);
@@ -138,7 +141,7 @@ export const useDotLottie = (config?: DotLottieConfig) => {
 			canvas.addEventListener('mouseenter', hoverHandler);
 			canvas.addEventListener('mouseleave', hoverHandler);
 		} else {
-			dotLottieRef?.destroy();
+			dotLottieRef()?.destroy();
 			intersectionObserver()?.disconnect();
 			resizeObserver()?.disconnect();
 		}
