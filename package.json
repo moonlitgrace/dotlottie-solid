@@ -49,12 +49,12 @@
     "prepublishOnly": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 \"src/**/*.{js,ts,tsx,jsx}\"",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0"
+    "solid-js": "^1.8.17"
   },
   "devDependencies": {
     "@types/node": "^20.13.0",
@@ -83,5 +83,9 @@
   "engines": {
     "node": ">=18",
     "pnpm": ">=9.0.0"
+  },
+  "dependencies": {
+    "@lottiefiles/dotlottie-web": "^0.23.1",
+    "debounce": "^2.1.0"
   }
 }
