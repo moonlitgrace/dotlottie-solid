@@ -1,6 +1,14 @@
 import type { Config } from '@lottiefiles/dotlottie-web';
 import { DotLottie } from '@lottiefiles/dotlottie-web';
-import { Accessor, ComponentProps, JSX, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
+import {
+	Accessor,
+	ComponentProps,
+	JSX,
+	createEffect,
+	createMemo,
+	createSignal,
+	onCleanup,
+} from 'solid-js';
 import { isServer } from 'solid-js/web';
 import debounce from 'debounce';
 
@@ -166,7 +174,7 @@ export const useDotLottie = (config: DotLottieConfig): UseDotLottieReturn => {
 		if (canvasRef) {
 			canvasRef.removeEventListener('mouseenter', hoverHandler);
 			canvasRef.removeEventListener('mouseleave', hoverHandler);
-		};
+		}
 	});
 
 	// Reactivities
@@ -260,7 +268,7 @@ export const useDotLottie = (config: DotLottieConfig): UseDotLottieReturn => {
 		if (typeof config.data == 'string' || config.data instanceof ArrayBuffer) {
 			dotLottie()?.load({
 				data: config.data,
-				...(configRef || {}),
+				...configRef,
 			});
 		}
 	});
@@ -271,7 +279,7 @@ export const useDotLottie = (config: DotLottieConfig): UseDotLottieReturn => {
 		if (typeof config.src === 'string') {
 			dotLottie()?.load({
 				src: config.src,
-				...(configRef || {}),
+				...configRef,
 			});
 		}
 	});
