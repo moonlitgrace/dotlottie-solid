@@ -30,8 +30,8 @@ export const DotLottieSolid = (props: DotLottieSolidProps): JSX.Element => {
 	const { DotLottieComponent, dotLottie } = useDotLottie(dotLottieProps);
 
 	createEffect(() => {
-		dotLottieProps.dotLottieRef?.(dotLottie);
-	}, [dotLottie]);
+		dotLottieProps.dotLottieRef?.(dotLottie());
+	});
 
 	return <DotLottieComponent {...restProps} />;
 };
