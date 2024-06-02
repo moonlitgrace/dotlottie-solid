@@ -28,7 +28,7 @@ Now let's see how to use `dotLottie` in a solidjs app.
 ## Installation
 
 ```bash
-pnpm add dotlottie-solid
+npm install dotlottie-solid
 ```
 
 ## Usage
