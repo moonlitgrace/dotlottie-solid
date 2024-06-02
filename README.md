@@ -81,7 +81,7 @@ The `renderConfig` object accepts the following properties:
 
 ## Custom Playback Controls
 
-`DotLottieSolid` component makes it easy to build custom playback controls for the animation. It exposes a `dotLottieRef` prop that can be used to set a reference to the [`dotLottie`](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This instance can be used to control the playback of the animation using the methods exposed by the [`dotLottie`](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#methods) web player instance.
+`DotLottieSolid` component makes it easy to build custom playback controls for the animation. It exposes a `dotLottieRef` prop that can be used to set a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This instance can be used to control the playback of the animation using the methods exposed by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#methods) web player instance.
 
 Here is an example:
 
@@ -137,7 +137,7 @@ You can find the list of methods that can be used to control the playback of the
 
 ## Listening to Events
 
-`DotLottieSolid` component can receive a `dotLottieRef` prop that can be used to set a reference to the [`dotLottie`](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This reference can be used to listen to player events emitted by the [`dotLottie`](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#events) web instance.
+`DotLottieSolid` component can receive a `dotLottieRef` prop that can be used to set a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This reference can be used to listen to player events emitted by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#events) web instance.
 
 Here is an example:
 
@@ -149,23 +149,19 @@ const App = () => {
   const [dotLottie, setDotLottie] = Solid.createSignal(null);
 
   Solid.createEffect(() => {
-
-    // This function will be called when the animation starts playing.
     function onPlay() {
       console.log('Animation start playing');
     }
 
-    // This function will be called when the animation is paused.
     function onPause() {
       console.log('Animation paused');
     }
 
-    // This function will be called when the animation is completed.
     function onComplete() {
       console.log('Animation completed');
     }
 
-    function onFrameChange({currentFrame}) {
+    function onFrameChange({ currentFrame }) {
       console.log('Current frame: ', currentFrame);
     }
 
@@ -189,7 +185,7 @@ const App = () => {
   });
 
   return (
-    <DotLottieReact
+    <DotLottieSolid
       src="path/to/animation.lottie"
       loop
       autoplay
