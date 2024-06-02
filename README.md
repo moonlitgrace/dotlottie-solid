@@ -19,7 +19,7 @@
 
 ## Introduction
 
-An unofficial Solid library for rendering lottie and dotLottie animations in the browser.\
+An unofficial `Solid` library for rendering `lottie` and `dotLottie` animations in the browser.\
 Use lotties in your solidjs apps, using [dotlottie-web](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web) under the hood.
 Thank you @[LottieFiles](https://github.com/LottieFiles) for creating such amazing library ❤️
 
