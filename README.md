@@ -12,6 +12,7 @@
 ## Contents
 
 * [Introduction](#introduction)
+* [Live Examples](#live-examples)
 * [Installation](#installation)
 * [Usage](#usage)
 * [APIs](#apis)
@@ -27,6 +28,10 @@ Use lotties in your solidjs apps, using [dotlottie-web](https://github.com/Lotti
 Thank you @[LottieFiles](https://github.com/LottieFiles) for creating such amazing library ❤️
 
 Now let's see how to use `dotLottie` in a solidjs app.
+
+## Live Examples
+ - [Get Started](https://playground.solidjs.com/anonymous/a416c865-42c2-4c19-826f-0f74fc15b153)
+ - [Custom Playback Controls](https://playground.solidjs.com/anonymous/59166b37-9d99-4c24-ba23-cec71404e2ae)
 
 ## Installation
 
@@ -90,32 +95,26 @@ Here is an example:
 
 ```tsx
 import Solid from 'solidjs';
-import { DotLottieSolid } from 'dotlottie-solid';
+import { type DotLottie, DotLottieSolid } from 'dotlottie-solid';
 
 const App = () => {
-  const [dotLottie, setDotLottie] = Solid.createSignal(null);
+  const [dotLottie, setDotLottie] = Solid.createSignal<DotLottie | null>(null);
 
-  function play(){
-    if(dotLottie()){
-      dotLottie().play();
+  function play() {
+    if (dotLottie()) {
+      dotLottie()?.play();
     }
   }
 
-  function pause(){
-    if(dotLottie()){
-      dotLottie().pause();
+  function pause() {
+    if (dotLottie()) {
+      dotLottie()?.pause();
     }
   }
 
-  function stop(){
-    if(dotLottie()){
-      dotLottie().stop();
-    }
-  }
-
-  function seek(){
-    if(dotLottie()){
-      dotLottie().setFrame(30);
+  function stop() {
+    if (dotLottie()) {
+      dotLottie()?.stop();
     }
   }
 
@@ -130,7 +129,6 @@ const App = () => {
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
       <button onClick={stop}>Stop</button>
-      <button onClick={seek}>Seek to frame no. 30</button>
     </div>
   );
 };
@@ -146,10 +144,10 @@ Here is an example:
 
 ```tsx
 import Solid from 'solidjs';
-import { DotLottieSolid } from 'dotlottie-solid';
+import { type DotLottie, DotLottieSolid } from 'dotlottie-solid';
 
 const App = () => {
-  const [dotLottie, setDotLottie] = Solid.createSignal(null);
+  const [dotLottie, setDotLottie] = Solid.createSignal<DotLottie | null>(null);
 
   Solid.createEffect(() => {
     function onPlay() {
@@ -170,29 +168,29 @@ const App = () => {
 
     // Listen to events emitted by the DotLottie instance when it is available.
     if (dotLottie()) {
-      dotLottie().addEventListener('play', onPlay);
-      dotLottie().addEventListener('pause', onPause);
-      dotLottie().addEventListener('complete', onComplete);
-      dotLottie().addEventListener('frame', onFrameChange);
+      dotLottie()?.addEventListener('play', onPlay);
+      dotLottie()?.addEventListener('pause', onPause);
+      dotLottie()?.addEventListener('complete', onComplete);
+      dotLottie()?.addEventListener('frame', onFrameChange);
     }
-  }, [dotLottie]);
+  });
 
   Solid.onCleanup(() => {
     // Remove event listeners when the component is unmounted.
     if (dotLottie()) {
-      dotLottie().removeEventListener('play', onPlay);
-      dotLottie().removeEventListener('pause', onPause);
-      dotLottie().removeEventListener('complete', onComplete);
-      dotLottie().removeEventListener('frame', onFrameChange);
+      dotLottie()?.removeEventListener('play', onPlay);
+      dotLottie()?.removeEventListener('pause', onPause);
+      dotLottie()?.removeEventListener('complete', onComplete);
+      dotLottie()?.removeEventListener('frame', onFrameChange);
     }
   });
 
   return (
     <DotLottieSolid
+      dotLottieRef={setDotLottie}
       src="path/to/animation.lottie"
       loop
       autoplay
-      dotLottieRef={setDotLottie}
     />
   );
 };
@@ -202,7 +200,7 @@ const App = () => {
 
 ## Development
 ```bash
-# use pnpm package manager
+# use latest pnpm package manager version
 pnpm install
 pnpm dev
 # build
