@@ -1,5 +1,5 @@
-import { createEffect, createSignal, type Component } from 'solid-js';
-import { DotLottie, DotLottieSolid } from 'src';
+import { createEffect, createSignal, onCleanup, type Component } from 'solid-js';
+import { type DotLottie, DotLottieSolid } from 'src';
 
 const animations = [
 	'https://lottie.host/647eb023-6040-4b60-a275-e2546994dd7f/zDCfp5lhLe.json',
@@ -21,15 +21,15 @@ const App: Component = () => {
 		dotLottie()?.addEventListener('unfreeze', console.log);
 		dotLottie()?.addEventListener('pause', console.log);
 		dotLottie()?.addEventListener('stop', console.log);
+	});
 
-		return () => {
-			dotLottie()?.removeEventListener('play', console.log);
-			dotLottie()?.removeEventListener('freeze', console.log);
-			dotLottie()?.removeEventListener('unfreeze', console.log);
-			dotLottie()?.addEventListener('pause', console.log);
-			dotLottie()?.addEventListener('stop', console.log);
-		};
-	}, [dotLottie]);
+	onCleanup(() => {
+		dotLottie()?.removeEventListener('play', console.log);
+		dotLottie()?.removeEventListener('freeze', console.log);
+		dotLottie()?.removeEventListener('unfreeze', console.log);
+		dotLottie()?.addEventListener('pause', console.log);
+		dotLottie()?.addEventListener('stop', console.log);
+	});
 
 	return (
 		<div
