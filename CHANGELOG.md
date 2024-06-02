@@ -1,6 +1,6 @@
 # dotlottie-solid
 
-## 3.0.0
+## 1.1.1
 
 ### Major Changes
 
