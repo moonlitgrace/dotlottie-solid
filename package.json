@@ -77,7 +77,15 @@
     "vitest": "^1.6.0"
   },
   "keywords": [
-    "solid"
+    "solid",
+    "dotlottie",
+    "lottie",
+    "player",
+    "animation",
+    "web",
+    "canvas",
+    "javascript",
+    "thorvg"
   ],
   "packageManager": "pnpm@9.1.3",
   "engines": {
