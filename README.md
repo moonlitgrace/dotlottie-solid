@@ -7,7 +7,7 @@
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 ![NPM Version](https://img.shields.io/npm/v/dotlottie-solid?style=for-the-badge)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/moonlitgrace/dotlottie-solid/tests.yml?style=for-the-badge)
-![npm bundle size](https://img.shields.io/bundlephobia/min/dotlottie-solid?style=for-the-badge)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/dotlottie-solid?style=for-the-badge)
 
 ## Contents
 
