@@ -62,19 +62,19 @@ const App: Component = () => {
 
 The `DotLottieSolidProps` extends the `HTMLCanvasElement` Props and accepts all the props that the `HTMLCanvasElement` accepts. In addition to that, it also accepts the following props:
 
-| Property name         | Type                      | Default              | Description                                                                                                                                                                                                                                           |
-|-----------------------|---------------------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `autoplay`              | boolean                 | false                | Auto-starts the animation on load.                                                                                                                                                                                                                    |
-| `loop`                  | boolean                 | false                | Determines if the animation should loop.                                                                                                                                                                                                              |
-| `src`                   | string                  | undefined            | URL to the animation data ( .json  or  .lottie).                                                                                                                                                                                                      |
-| `speed`                 | number                  | 1                    | Animation playback speed. 1 is regular speed.                                                                                                                                                                                                         |
-| `data`                  | string \| ArrayBuffer   | undefined            | Animation data provided either as a Lottie JSON string or as an ArrayBuffer for .lottie animations.                                                                                                                                                   |
-| `mode`                  | string                  | "forward"            | Animation play mode. Accepts "forward", "reverse", "bounce", "reverse-bounce".                                                                                                                                                                        |
+| Property name           | Type                      | Default              | Description                                                                                                                                                                                                                                           |
+|-------------------------|---------------------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `autoplay`              | boolean                   | false                | Auto-starts the animation on load.                                                                                                                                                                                                                    |
+| `loop`                  | boolean                   | false                | Determines if the animation should loop.                                                                                                                                                                                                              |
+| `src`                   | string                    | undefined            | URL to the animation data ( .json  or  .lottie).                                                                                                                                                                                                      |
+| `speed`                 | number                    | 1                    | Animation playback speed. 1 is regular speed.                                                                                                                                                                                                         |
+| `data`                  | string \| ArrayBuffer     | undefined            | Animation data provided either as a Lottie JSON string or as an ArrayBuffer for .lottie animations.                                                                                                                                                   |
+| `mode`                  | string                    | "forward"            | Animation play mode. Accepts "forward", "reverse", "bounce", "reverse-bounce".                                                                                                                                                                        |
 | `backgroundColor`       | string                    | undefined            | Background color of the canvas. Accepts 6-digit or 8-digit hex color string (e.g., "#000000", "#000000FF"),                                                                                                                                           |
 | `segment`               | [number, number]          | [0, totalFrames - 1] | Animation segment. Accepts an array of two numbers, where the first  number is the start frame and the second number is the end frame.                                                                                                                |
 | `renderConfig`          | RenderConfig              | {}                   | Configuration for rendering the animation.                                                                                                                                                                                                            |
 | `playOnHover`           | boolean                   | false                | Determines if the animation should play on mouse hover and pause on mouse out.                                                                                                                                                                        |
-| `dotLottieRef`          | Setter<DotLottie \| null> | undefined            | Setter function that sets a reference to the  dotLottie web player instance.                                                                                                                                                                          |
+| `dotLottieRefCallback`  | (v: DotLottie) => void    | undefined            | Setter function that sets a reference to the  dotLottie web player instance.                                                                                                                                                                          |
 | `useFrameInterpolation` | boolean                   | true                 | Determines if the animation should update on subframes. If set to false,  the original AE frame rate will be maintained. If set to true, it will  refresh at each requestAnimationFrame, including intermediate values.  The default setting is true. |
 | `autoResizeCanvas`      | boolean                   | true                 | Determines if the canvas should resize automatically to its container                                                                                                                                                                                 |
 | `marker`                | string                    | undefined            | The Lottie named marker to play.                                                                                                                                                                                                                      |
@@ -85,11 +85,11 @@ The `renderConfig` object accepts the following properties:
 
 | Property name      | Type   | Default                       | Description             |
 |--------------------|--------|-------------------------------|-------------------------|
-| `devicePixelRatio` | number | window\.devicePixelRatio \|\| 1 | The device pixel ratio. |
+| `devicePixelRatio` | number | window\.devicePixelRatio \| 1 | The device pixel ratio. |
 
 ## Custom Playback Controls
 
-`DotLottieSolid` component makes it easy to build custom playback controls for the animation. It exposes a `dotLottieRef` prop that can be used to set a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This instance can be used to control the playback of the animation using the methods exposed by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#methods) web player instance.
+`DotLottieSolid` component makes it easy to build custom playback controls for the animation. It exposes a `dotLottieRefCallback` prop that can be used to get a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This instance can be used to control the playback of the animation using the methods exposed by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#methods) web player instance.
 
 Here is an example:
 
@@ -101,21 +101,15 @@ const App = () => {
   const [dotLottie, setDotLottie] = Solid.createSignal<DotLottie | null>(null);
 
   function play() {
-    if (dotLottie()) {
-      dotLottie()?.play();
-    }
+    dotLottie()?.play();
   }
 
   function pause() {
-    if (dotLottie()) {
-      dotLottie()?.pause();
-    }
+    dotLottie()?.pause();
   }
 
   function stop() {
-    if (dotLottie()) {
-      dotLottie()?.stop();
-    }
+    dotLottie()?.stop();
   }
 
   return (
@@ -123,7 +117,7 @@ const App = () => {
       src="path/to/animation.lottie"
       loop
       autoplay
-      dotLottieRef={setDotLottie}
+      dotLottieRefCallback={setDotLottie}
     />
     <div>
       <button onClick={play}>Play</button>
@@ -138,7 +132,7 @@ You can find the list of methods that can be used to control the playback of the
 
 ## Listening to Events
 
-`DotLottieSolid` component can receive a `dotLottieRef` prop that can be used to set a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This reference can be used to listen to player events emitted by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#events) web instance.
+`DotLottieSolid` component can receive a `dotLottieRefCallback` prop that can be used to get a reference to the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#apis) web player instance. This reference can be used to listen to player events emitted by the [dotLottie](https://github.com/LottieFiles/dotlottie-web/blob/main/packages/web/README.md#events) web instance.
 
 Here is an example:
 
@@ -168,26 +162,26 @@ const App = () => {
 
     // Listen to events emitted by the DotLottie instance when it is available.
     if (dotLottie()) {
-      dotLottie()?.addEventListener('play', onPlay);
-      dotLottie()?.addEventListener('pause', onPause);
-      dotLottie()?.addEventListener('complete', onComplete);
-      dotLottie()?.addEventListener('frame', onFrameChange);
+      dotLottie().addEventListener('play', onPlay);
+      dotLottie().addEventListener('pause', onPause);
+      dotLottie().addEventListener('complete', onComplete);
+      dotLottie().addEventListener('frame', onFrameChange);
     }
   });
 
   Solid.onCleanup(() => {
     // Remove event listeners when the component is unmounted.
     if (dotLottie()) {
-      dotLottie()?.removeEventListener('play', onPlay);
-      dotLottie()?.removeEventListener('pause', onPause);
-      dotLottie()?.removeEventListener('complete', onComplete);
-      dotLottie()?.removeEventListener('frame', onFrameChange);
+      dotLottie().removeEventListener('play', onPlay);
+      dotLottie().removeEventListener('pause', onPause);
+      dotLottie().removeEventListener('complete', onComplete);
+      dotLottie().removeEventListener('frame', onFrameChange);
     }
   });
 
   return (
     <DotLottieSolid
-      dotLottieRef={setDotLottie}
+      dotLottieRefCallback={(v) => setDotLottie(v)}
       src="path/to/animation.lottie"
       loop
       autoplay

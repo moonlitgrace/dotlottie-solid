@@ -1,6 +1,6 @@
 {
   "name": "dotlottie-solid",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "An unofficial Solid library for rendering lottie and dotLottie animations in the browser.",
   "license": "MIT",
   "author": "moonlitgrace",
@@ -46,7 +46,7 @@
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
-    "prepublishOnly": "pnpm build",
+    "prepublish": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
     "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 \"src/**/*.{js,ts,tsx,jsx}\"",
