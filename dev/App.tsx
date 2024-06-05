@@ -41,7 +41,7 @@ const App: Component = () => {
 			}}
 		>
 			<DotLottieSolid
-				dotLottieRef={setDotlottie}
+				dotLottieRefCallback={setDotlottie}
 				useFrameInterpolation={useFrameInterpolation()}
 				src={animations[srcIdx()]}
 				autoplay
