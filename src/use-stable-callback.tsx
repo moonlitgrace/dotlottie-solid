@@ -1,11 +1,13 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal } from 'solid-js';
 
-export default function useStableCallback<Args extends unknown[], T>(callback: (...args: Args) => T): (...args: Args) => T {
+export default function useStableCallback<Args extends unknown[], T>(
+	callback: (...args: Args) => T,
+): (...args: Args) => T {
 	const [getCallback, setCallback] = createSignal(callback);
 
 	createEffect(() => {
 		setCallback(() => callback);
-	})
+	});
 
 	return (...args: Args) => getCallback()(...args);
-};
+}

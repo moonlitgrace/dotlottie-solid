@@ -1,5 +1,5 @@
 import type { Config, DotLottie } from '@lottiefiles/dotlottie-web';
-import { ComponentProps, JSX, Setter, createEffect, splitProps } from 'solid-js';
+import { ComponentProps, JSX, createEffect, splitProps } from 'solid-js';
 
 import { useDotLottie } from './use-dotlottie';
 import useStableCallback from './use-stable-callback';
@@ -30,8 +30,10 @@ export const DotLottieSolid = (props: DotLottieSolidProps): JSX.Element => {
 	]);
 	const { DotLottieComponent, dotLottie } = useDotLottie(dotLottieProps);
 
-	const stableDotLottieRefCallback = 
-		typeof dotLottieProps.dotLottieRefCallback === 'function' ? useStableCallback(dotLottieProps.dotLottieRefCallback) : undefined;
+	const stableDotLottieRefCallback =
+		typeof dotLottieProps.dotLottieRefCallback === 'function'
+			? useStableCallback(dotLottieProps.dotLottieRefCallback)
+			: undefined;
 
 	createEffect(() => {
 		if (typeof stableDotLottieRefCallback === 'function') {
