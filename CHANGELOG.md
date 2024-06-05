@@ -1,5 +1,11 @@
 # dotlottie-solid
 
+## 1.3.0
+
+### Minor Changes
+
+-   [#34](https://github.com/moonlitgrace/dotlottie-solid/pull/34) [`6625047`](https://github.com/moonlitgrace/dotlottie-solid/commit/6625047745c79e3ea6f3006214cc8d1ef9b45d5a) Thanks [@moonlitgrace](https://github.com/moonlitgrace)! - Implement useStableCallback and rename dotLottieRef -> dotLottieRefCallback
+
 ## 1.1.1
 
 ### Major Changes
