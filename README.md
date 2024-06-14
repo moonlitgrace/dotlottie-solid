@@ -1,6 +1,6 @@
-<!-- <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=dotlottie-solid&background=tiles&project=%20" alt="dotlottie-solid">
-</p> -->
+> [!WARNING]
+> This package in now (deprecated) integrated into dotlottie mainline. Visit [@lottiefiles/dotlottie-solid](https://www.npmjs.com/package/@lottiefiles/dotlottie-solid)\
+> Thank you!
 
 # dotlottie-solid
 
