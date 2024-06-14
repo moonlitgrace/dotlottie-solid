@@ -98,7 +98,7 @@
     "pnpm": ">=9.0.0"
   },
   "dependencies": {
-    "@lottiefiles/dotlottie-web": "^0.23.1",
+    "@lottiefiles/dotlottie-web": "^0.24.0",
     "debounce": "^2.1.0"
   }
 }

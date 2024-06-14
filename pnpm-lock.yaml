@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@lottiefiles/dotlottie-web':
-        specifier: ^0.23.1
-        version: 0.23.2
+        specifier: ^0.24.0
+        version: 0.24.0
       debounce:
         specifier: ^2.1.0
         version: 2.1.0
@@ -495,8 +495,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lottiefiles/dotlottie-web@0.23.2':
-    resolution: {integrity: sha512-/dR7Yw7L2fTXDvzI4xjJF2WNGD6/fZLZ1vs5O+nBbXC/E2cGtOebUXzblA5wVmAPtERBn+VOEV2TMhj8H7/UMQ==}
+  '@lottiefiles/dotlottie-web@0.24.0':
+    resolution: {integrity: sha512-YJ6NVgkduDxHZqkBaKaBALn6IlSKUpE3lWhUlKNgcjm7xsXGpQj7Eb6HAqT4clWW61sK/8u8FiEkvOp6FIYS/g==}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -3211,7 +3211,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@lottiefiles/dotlottie-web@0.23.2': {}
+  '@lottiefiles/dotlottie-web@0.24.0': {}
 
   '@manypkg/find-root@1.1.0':
     dependencies:
